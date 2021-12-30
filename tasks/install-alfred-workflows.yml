@@ -1,0 +1,19 @@
+# Install alfred workflows
+# Install Oh-my-zsh
+- name: Check if .oh-my-zsh exists
+  stat:
+    path: "{{ ansible_env.HOME }}/Library/Application Support/Alfred/Alfred.alfredpreferences/workflows/cssc"
+  register: cssc_result
+
+- name: Download binaries
+  get_url:
+    url: https://github.com/JonasKop/CSSC/releases/download/1.0.2/CSSC.alfredworkflow
+    dest: /tmp/CSSC.alfredworkflow
+  when: cssc_result.stat.exists
+
+- name: UNZIPPING the files
+  unarchive:
+    src: /tmp/CSSC.alfredworkflow
+    dest: "{{ ansible_env.HOME }}/Library/Application Support/Alfred/Alfred.alfredpreferences/workflows/cssc"
+    copy: no
+  when: cssc_result.stat.exists

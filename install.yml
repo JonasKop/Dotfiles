@@ -1,0 +1,22 @@
+- name: "Playing with Ansible and Git"
+  hosts: localhost
+  connection: local
+  vars: 
+    config: "{{ (lookup('template', 'config.yaml')|from_yaml) }}"
+  tasks:
+    - name: Install brew packages
+      include_tasks: tasks/install-brew-packages.yml
+
+    # Copy dotfiles
+    - name: Synchronization
+      ansible.posix.synchronize:
+        src: "{{ item.src }}"
+        dest: "{{ ansible_env.HOME }}/{{ item.dest }}"
+        delete: yes
+      loop: "{{ config.files }}"
+
+    - name: Install oh-my-zsh
+      include_tasks: tasks/install-alfred-workflows.yml
+
+    - name: Install alfred workflows
+      include_tasks: tasks/install-alfred-workflows.yml

@@ -1,0 +1,62 @@
+brew:
+  linked_packages:
+    - node@16
+    - openjdk
+  packages: 
+    # Development
+    - scala
+    - sbt
+    - go
+
+    # Tools
+    - yq
+    - jq
+    - wget
+    - tldr
+    - tree
+    
+    # Infrastructure
+    - ansible
+    - terraform
+    - awscli
+    - kubernetes-cli
+  casks:
+    # Media
+    - pocket-casts
+    - spotify
+
+    # Social
+    - slack
+    - messenger
+    - whatsapp
+
+    # Tools
+    - alfred
+    - scroll-reverser
+    - rectangle
+
+    # Development
+    - intellij-idea
+    - webstorm
+    - visual-studio-code
+
+    # Misc
+    - google-chrome
+    - 1password
+    - iterm2
+    - docker
+    - microsoft-office
+    - figma
+    - font-fira-code
+    - logitech-options
+
+files:
+  - name: Iterm configuration
+    src: .iterm/
+    dest: .iterm/
+  - name: vimrc
+    src: .vimrc
+    dest: .vimrc
+  - name: zshrc
+    src: .zshrc
+    dest: .zshrc

@@ -1,0 +1,12 @@
+- name: "Playing with Ansible and Git"
+  hosts: localhost
+  connection: local 
+  vars: 
+    config: "{{ (lookup('template', 'config.yaml')|from_yaml) }}"
+  tasks:
+  - name: Synchronization 
+    ansible.posix.synchronize:
+      src: "{{ ansible_env.HOME }}/{{ item.dest }}"
+      dest: "{{ item.src }}"
+      mode: pull
+    loop: "{{ config.files }}"
