@@ -1271,5 +1271,7 @@
 	<real>0.14740946649347691</real>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 </dict>
 </plist>
